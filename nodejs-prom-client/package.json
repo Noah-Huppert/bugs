@@ -1,0 +1,14 @@
+{
+  "name": "nodejs-prom-client",
+  "version": "1.0.0",
+  "description": "Bug where importing the `prom-client` NodeJS package crashes the process if  there is no stdin.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "prom-client": "^12.0.0"
+  }
+}
