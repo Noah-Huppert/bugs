@@ -57,7 +57,7 @@ system initializer. Included is a `run` file, to install and run:
 
 ```
 # mkdir /etc/sv/nodejs-prom-client
-# cp ./run /etc/sv/nodejs-prom-client
+# cp ./run.broken /etc/sv/nodejs-prom-client/run
 # ln -s /etc/sv/nodejs-prom-client /var/services
 # sv up nodejs-prom-client
 ```
@@ -65,3 +65,9 @@ system initializer. Included is a `run` file, to install and run:
 You will see that the `nodejs-prom-client` service does not start. If you look
 at logs (by configuring `/etc/sv/nodejs-prom-client/log/run`) you will see the
 `ENOTCONN` error.
+
+The fix is to provide the program with some stdin. Replace the `run.broken`
+service file with the `run.fix` service file and it will work.
+
+A similar example could be made with Systemd, however I do not have systemd so I
+cannot do so.
