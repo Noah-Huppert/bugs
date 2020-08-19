@@ -1,2 +1,4 @@
 #!/usr/bin/env bash
-exec bash -c : | node index.js
+# Pass the source file in via stdin. This is to fix a bug where not having any
+# stdin causes prom-client to crash.
+exec bash -c node index.js < index.js
