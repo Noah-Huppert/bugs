@@ -1,0 +1,213 @@
+2020-03-25T14:00:06.22808 kern.info: [84609.890986] i915 0000:00:02.0: GPU HANG: ecode 9:1:0x00000000, hang on rcs0
+2020-03-25T14:00:06.22898 kern.notice: [84609.892002] i915 0000:00:02.0: Resetting rcs0 for hang on rcs0
+2020-03-25T14:00:06.22903 kern.err: [84609.892771] [drm:gen8_reset_engines [i915]] *ERROR* rcs0 reset request timed out: {request: 00000001, RESET_CTL: 00000001}
+2020-03-25T14:00:06.22907 kern.notice: [84609.892872] i915 0000:00:02.0: Resetting chip for hang on rcs0
+2020-03-25T14:00:06.23093 kern.err: [84609.894661] [drm:gen8_reset_engines [i915]] *ERROR* rcs0 reset request timed out: {request: 00000001, RESET_CTL: 00000001}
+2020-03-25T14:00:06.23198 kern.err: [84609.895424] [drm:gen8_reset_engines [i915]] *ERROR* rcs0 reset request timed out: {request: 00000001, RESET_CTL: 00000001}
+2020-03-25T14:00:08.27711 kern.err: [84611.939923] list_del corruption. prev->next should be ffff9099771cd338, but was 4268ac47703d7ba7
+2020-03-25T14:00:08.27718 kern.warn: [84611.939947] ------------[ cut here ]------------
+2020-03-25T14:00:08.27721 kern.crit: [84611.939952] kernel BUG at lib/list_debug.c:51!
+2020-03-25T14:00:08.27724 kern.warn: [84611.939962] invalid opcode: 0000 [#1] PREEMPT SMP PTI
+2020-03-25T14:00:08.27726 kern.warn: [84611.939968] CPU: 0 PID: 30784 Comm: kworker/u16:6 Not tainted 5.4.20_1 #1
+2020-03-25T14:00:08.27729 kern.warn: [84611.939971] Hardware name: LENOVO 20KHCTO1WW/20KHCTO1WW, BIOS N23ET69W (1.44 ) 11/25/2019
+2020-03-25T14:00:08.27731 kern.warn: [84611.940043] Workqueue: i915 retire_work_handler [i915]
+2020-03-25T14:00:08.27734 kern.warn: [84611.940053] RIP: 0010:__list_del_entry_valid.cold+0x31/0x55
+2020-03-25T14:00:08.27736 kern.warn: [84611.940059] Code: 76 fc a3 e8 44 c3 ce ff 0f 0b 48 c7 c7 e0 76 fc a3 e8 36 c3 ce ff 0f 0b 48 89 f2 48 89 fe 48 c7 c7 a0 76 fc a3 e8 22 c3 ce ff <0f> 0b 48 89 fe 4c 89 c2 48 c7 c7 68 76 fc a3 e8 0e c3 ce ff 0f 0b
+2020-03-25T14:00:08.27741 kern.warn: [84611.940063] RSP: 0018:ffffba9b03d53da8 EFLAGS: 00010046
+2020-03-25T14:00:08.27743 kern.warn: [84611.940067] RAX: 0000000000000054 RBX: ffff9099771cd200 RCX: 0000000000000000
+2020-03-25T14:00:08.27748 kern.warn: [84611.940070] RDX: 0000000000000000 RSI: ffff909c124175d8 RDI: ffff909c124175d8
+2020-03-25T14:00:08.27750 kern.warn: [84611.940073] RBP: ffff909c0fcf0068 R08: ffff909c124175d8 R09: 0000000000000063
+2020-03-25T14:00:08.27752 kern.warn: [84611.940076] R10: ffffba9b03d53c68 R11: ffffba9b03d53c6d R12: ffff909c0fcf0000
+2020-03-25T14:00:08.27755 kern.warn: [84611.940079] R13: ffff909c0fcf0000 R14: ffff909c08c88840 R15: ffff909c074c7ae8
+2020-03-25T14:00:08.27757 kern.warn: [84611.940083] FS:  0000000000000000(0000) GS:ffff909c12400000(0000) knlGS:0000000000000000
+2020-03-25T14:00:08.27760 kern.warn: [84611.940087] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+2020-03-25T14:00:08.27762 kern.warn: [84611.940090] CR2: 00005601a3b50378 CR3: 000000048020a004 CR4: 00000000003606f0
+2020-03-25T14:00:08.27764 kern.warn: [84611.940093] Call Trace:
+2020-03-25T14:00:08.27766 kern.warn: [84611.940165]  i915_request_retire+0xbe/0x3b0 [i915]
+2020-03-25T14:00:08.27768 kern.warn: [84611.940236]  retire_requests+0x4e/0x60 [i915]
+2020-03-25T14:00:08.27770 kern.warn: [84611.940304]  i915_retire_requests+0xa9/0x230 [i915]
+2020-03-25T14:00:08.27772 kern.warn: [84611.940369]  retire_work_handler+0x56/0x60 [i915]
+2020-03-25T14:00:08.27775 kern.warn: [84611.940378]  process_one_work+0x199/0x3b0
+2020-03-25T14:00:08.27777 kern.warn: [84611.940386]  worker_thread+0x50/0x3a0
+2020-03-25T14:00:08.27783 kern.warn: [84611.940393]  kthread+0xfb/0x130
+2020-03-25T14:00:08.27786 kern.warn: [84611.940400]  ? process_one_work+0x3b0/0x3b0
+2020-03-25T14:00:08.27788 kern.warn: [84611.940405]  ? kthread_park+0x90/0x90
+2020-03-25T14:00:08.27790 kern.warn: [84611.940414]  ret_from_fork+0x35/0x40
+2020-03-25T14:00:08.27792 kern.warn: [84611.940420] Modules linked in: ip6table_nat ip6_tables iptable_nat nf_nat nf_conntrack nf_defrag_ipv6 nf_defrag_ipv4 ip_tables x_tables overlay nfnetlink_queue nfnetlink_log nfnetlink rfcomm ctr ccm cmac algif_hash algif_skcipher af_alg bnep 8021q garp mrp stp llc nls_iso8859_1 nls_cp437 vfat fat uvcvideo videobuf2_vmalloc videobuf2_memops videobuf2_v4l2 videobuf2_common videodev btusb btbcm btrtl btintel mc joydev rmi_smbus rmi_core iTCO_wdt coretemp iTCO_vendor_support mei_hdcp intel_rapl_msr x86_pkg_temp_thermal intel_powerclamp kvm_intel snd_hda_codec_hdmi snd_soc_skl kvm snd_soc_hdac_hda snd_hda_ext_core iwlmvm snd_soc_sst_ipc snd_soc_sst_dsp snd_soc_acpi_intel_match irqbypass snd_soc_acpi intel_cstate mac80211 snd_soc_core snd_compress snd_hda_codec_realtek snd_pcm_dmaengine ac97_bus snd_hda_codec_generic libarc4 intel_rapl_perf snd_hda_intel snd_intel_nhlt pcspkr psmouse input_leds iwlwifi snd_hda_codec wmi_bmof intel_wmi_thunderbolt snd_hda_core snd_hwdep e1000e i2c_i801 snd_pcm
+2020-03-25T14:00:08.27800 kern.warn: [84611.940482]  cfg80211 thunderbolt mei_me tpm_crb mei intel_pch_thermal processor_thermal_device intel_xhci_usb_role_switch intel_soc_dts_iosf tpm_tis roles intel_rapl_common tpm_tis_core tpm thermal rng_core thinkpad_acpi ledtrig_audio hwmon int3403_thermal int340x_thermal_zone ac int3400_thermal acpi_thermal_rel acpi_pad evdev mac_hid snd_seq snd_seq_device snd_timer snd soundcore vhost_vsock vmw_vsock_virtio_transport_common vsock vhost_net vhost tap uhid hci_vhci bluetooth ecdh_generic rfkill ecc vfio_iommu_type1 vfio uinput userio ppp_generic slhc tun loop nvram btrfs xor raid6_pq libcrc32c cuse fuse ext4 crc32c_generic crc16 mbcache jbd2 sd_mod uas usb_storage scsi_mod dm_crypt i915 crct10dif_pclmul crc32_pclmul crc32c_intel ghash_clmulni_intel intel_gtt i2c_algo_bit xhci_pci drm_kms_helper aesni_intel syscopyarea sysfillrect sysimgblt crypto_simd fb_sys_fops xhci_hcd cryptd drm glue_helper serio_raw usbcore agpgart wmi battery i2c_hid hid video button dm_mirror dm_region_hash dm_log
+2020-03-25T14:00:08.27808 kern.warn: [84611.940552]  dm_mod
+2020-03-25T14:00:08.27810 kern.warn: [84611.940563] ---[ end trace 2bc0a6e8d240630c ]---
+2020-03-25T14:00:08.27812 kern.warn: [84611.940568] RIP: 0010:__list_del_entry_valid.cold+0x31/0x55
+2020-03-25T14:00:08.27814 kern.warn: [84611.940573] Code: 76 fc a3 e8 44 c3 ce ff 0f 0b 48 c7 c7 e0 76 fc a3 e8 36 c3 ce ff 0f 0b 48 89 f2 48 89 fe 48 c7 c7 a0 76 fc a3 e8 22 c3 ce ff <0f> 0b 48 89 fe 4c 89 c2 48 c7 c7 68 76 fc a3 e8 0e c3 ce ff 0f 0b
+2020-03-25T14:00:08.27816 kern.warn: [84611.940577] RSP: 0018:ffffba9b03d53da8 EFLAGS: 00010046
+2020-03-25T14:00:08.27819 kern.warn: [84611.940580] RAX: 0000000000000054 RBX: ffff9099771cd200 RCX: 0000000000000000
+2020-03-25T14:00:08.27821 kern.warn: [84611.940583] RDX: 0000000000000000 RSI: ffff909c124175d8 RDI: ffff909c124175d8
+2020-03-25T14:00:08.27823 kern.warn: [84611.940586] RBP: ffff909c0fcf0068 R08: ffff909c124175d8 R09: 0000000000000063
+2020-03-25T14:00:08.27825 kern.warn: [84611.940589] R10: ffffba9b03d53c68 R11: ffffba9b03d53c6d R12: ffff909c0fcf0000
+2020-03-25T14:00:08.27830 kern.warn: [84611.940592] R13: ffff909c0fcf0000 R14: ffff909c08c88840 R15: ffff909c074c7ae8
+2020-03-25T14:00:08.27832 kern.warn: [84611.940595] FS:  0000000000000000(0000) GS:ffff909c12400000(0000) knlGS:0000000000000000
+2020-03-25T14:00:08.27834 kern.warn: [84611.940599] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+2020-03-25T14:00:08.27836 kern.warn: [84611.940601] CR2: 00005601a3b50378 CR3: 000000048020a004 CR4: 00000000003606f0
+2020-03-25T14:00:08.27838 kern.info: [84611.940607] note: kworker/u16:6[30784] exited with preempt_count 1
+2020-03-25T14:00:16.17297 kern.warn: [84619.836251] mce: CPU0: Core temperature above threshold, cpu clock throttled (total events = 15100)
+2020-03-25T14:00:16.17300 kern.warn: [84619.836252] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 230640)
+2020-03-25T14:00:16.17301 kern.warn: [84619.836254] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 230640)
+2020-03-25T14:00:16.17302 kern.warn: [84619.836255] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 230640)
+2020-03-25T14:00:16.17303 kern.warn: [84619.836256] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 230638)
+2020-03-25T14:00:16.17304 kern.warn: [84619.836261] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 230638)
+2020-03-25T14:00:16.17305 kern.warn: [84619.836329] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 230638)
+2020-03-25T14:00:16.17306 kern.warn: [84619.836330] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 230640)
+2020-03-25T14:01:10.60112 kern.err: [84674.263800] rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+2020-03-25T14:01:10.60116 kern.err: [84674.263806] rcu:         4-...0: (433 ticks this GP) idle=bc6/1/0x4000000000000000 softirq=6668249/6668251 fqs=14235
+2020-03-25T14:01:10.60118 kern.warn: [84674.263808]     (detected by 3, t=60002 jiffies, g=15761253, q=1418)
+2020-03-25T14:01:10.60119 kern.info: [84674.263810] Sending NMI from CPU 3 to CPUs 4:
+2020-03-25T14:01:10.60120 kern.warn: [84674.264828] NMI backtrace for cpu 4
+2020-03-25T14:01:10.60120 kern.warn: [84674.264828] CPU: 4 PID: 27680 Comm: kworker/4:1 Tainted: G      D           5.4.20_1 #1
+2020-03-25T14:01:10.60121 kern.warn: [84674.264829] Hardware name: LENOVO 20KHCTO1WW/20KHCTO1WW, BIOS N23ET69W (1.44 ) 11/25/2019
+2020-03-25T14:01:10.60122 kern.warn: [84674.264829] Workqueue: events_long hangcheck_elapsed [i915]
+2020-03-25T14:01:10.60122 kern.warn: [84674.264830] RIP: 0010:queued_spin_lock_slowpath+0x64/0x1c0
+2020-03-25T14:01:10.60123 kern.warn: [84674.264831] Code: 41 f0 0f ba 2f 08 0f 92 c0 0f b6 c0 c1 e0 08 89 c2 8b 07 30 e4 09 d0 a9 00 01 ff ff 75 1b 85 c0 74 0e 8b 07 84 c0 74 08 f3 90 <8b> 07 84 c0 75 f8 b8 01 00 00 00 66 89 07 c3 f6 c4 01 75 04 c6 47
+2020-03-25T14:01:10.60124 kern.warn: [84674.264831] RSP: 0018:ffffba9b12bb7ca0 EFLAGS: 00000002
+2020-03-25T14:01:10.60126 kern.warn: [84674.264831] RAX: 0000000000000101 RBX: ffff909c0fcf0000 RCX: 0000000000000000
+2020-03-25T14:01:10.60127 kern.warn: [84674.264832] RDX: 0000000000000000 RSI: 0000000000000000 RDI: ffff909c0fcf0068
+2020-03-25T14:01:10.60129 kern.warn: [84674.264832] RBP: ffff909c0fcf0000 R08: ffff909c0d2756d0 R09: ffff909c0d275758
+2020-03-25T14:01:10.60130 kern.warn: [84674.264832] R10: 0000000000000000 R11: ffffffffa425a5e8 R12: 0000000000000246
+2020-03-25T14:01:10.60130 kern.warn: [84674.264833] R13: 0000000000000000 R14: ffff909c074c7b90 R15: 0000000000000000
+2020-03-25T14:01:10.60131 kern.warn: [84674.264833] FS:  0000000000000000(0000) GS:ffff909c12500000(0000) knlGS:0000000000000000
+2020-03-25T14:01:10.60132 kern.warn: [84674.264833] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+2020-03-25T14:01:10.60132 kern.warn: [84674.264834] CR2: 00007fb64c04f000 CR3: 000000048020a006 CR4: 00000000003606e0
+2020-03-25T14:01:10.60133 kern.warn: [84674.264834] Call Trace:
+2020-03-25T14:01:10.60133 kern.warn: [84674.264834]  _raw_spin_lock_irqsave+0x39/0x3f
+2020-03-25T14:01:10.60134 kern.warn: [84674.264834]  execlists_submission_tasklet+0x34/0x70 [i915]
+2020-03-25T14:01:10.60134 kern.warn: [84674.264835]  intel_engine_is_idle.part.0+0x118/0x1b0 [i915]
+2020-03-25T14:01:10.60135 kern.warn: [84674.264835]  hangcheck_elapsed+0x214/0x450 [i915]
+2020-03-25T14:01:10.60136 kern.warn: [84674.264835]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:01:10.60137 kern.warn: [84674.264835]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:01:10.60137 kern.warn: [84674.264836]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:01:10.60138 kern.warn: [84674.264836]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:01:10.60138 kern.warn: [84674.264836]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:01:10.60139 kern.warn: [84674.264836]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:01:10.60139 kern.warn: [84674.264836]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:01:10.60140 kern.warn: [84674.264837]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:01:10.60140 kern.warn: [84674.264837]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:01:10.60141 kern.warn: [84674.264837]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:01:10.60141 kern.warn: [84674.264837]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:01:10.60142 kern.warn: [84674.264837]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:01:10.60142 kern.warn: [84674.264838]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:01:10.60143 kern.warn: [84674.264838]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:01:10.60143 kern.warn: [84674.264838]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:01:10.60144 kern.warn: [84674.264838]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:01:10.60144 kern.warn: [84674.264839]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:01:10.60145 kern.warn: [84674.264839]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:01:10.60146 kern.warn: [84674.264839]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:01:10.60147 kern.warn: [84674.264839]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:01:10.60147 kern.warn: [84674.264839]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:01:10.60148 kern.warn: [84674.264840]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:01:10.60148 kern.warn: [84674.264840]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:01:10.60149 kern.warn: [84674.264840]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:01:10.60149 kern.warn: [84674.264840]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:01:10.60150 kern.warn: [84674.264840]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:01:10.60150 kern.warn: [84674.264841]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:01:10.60151 kern.warn: [84674.264841]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:01:10.60151 kern.warn: [84674.264841]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:01:10.60152 kern.warn: [84674.264841]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:01:10.60152 kern.warn: [84674.264841]  ? __switch_to+0x80/0x490
+2020-03-25T14:01:10.60153 kern.warn: [84674.264842]  ? finish_task_switch+0x87/0x270
+2020-03-25T14:01:10.60153 kern.warn: [84674.264842]  process_one_work+0x199/0x3b0
+2020-03-25T14:01:10.60154 kern.warn: [84674.264842]  worker_thread+0x50/0x3a0
+2020-03-25T14:01:10.60154 kern.warn: [84674.264842]  kthread+0xfb/0x130
+2020-03-25T14:01:10.60155 kern.warn: [84674.264843]  ? process_one_work+0x3b0/0x3b0
+2020-03-25T14:01:10.60155 kern.warn: [84674.264843]  ? kthread_park+0x90/0x90
+2020-03-25T14:01:10.60156 kern.warn: [84674.264843]  ret_from_fork+0x35/0x40
+2020-03-25T14:04:10.60601 kern.err: [84854.268647] rcu: INFO: rcu_preempt detected stalls on CPUs/tasks:
+2020-03-25T14:04:10.60605 kern.err: [84854.268652] rcu:         4-...0: (433 ticks this GP) idle=bc6/1/0x4000000000000000 softirq=6668249/6668251 fqs=56919
+2020-03-25T14:04:10.60607 kern.warn: [84854.268654]     (detected by 7, t=240007 jiffies, g=15761253, q=5494)
+2020-03-25T14:04:10.60609 kern.info: [84854.268655] Sending NMI from CPU 7 to CPUs 4:
+2020-03-25T14:04:10.60610 kern.warn: [84854.269662] NMI backtrace for cpu 4
+2020-03-25T14:04:10.60612 kern.warn: [84854.269663] CPU: 4 PID: 27680 Comm: kworker/4:1 Tainted: G      D           5.4.20_1 #1
+2020-03-25T14:04:10.60612 kern.warn: [84854.269663] Hardware name: LENOVO 20KHCTO1WW/20KHCTO1WW, BIOS N23ET69W (1.44 ) 11/25/2019
+2020-03-25T14:04:10.60613 kern.warn: [84854.269664] Workqueue: events_long hangcheck_elapsed [i915]
+2020-03-25T14:04:10.60614 kern.warn: [84854.269664] RIP: 0010:queued_spin_lock_slowpath+0x64/0x1c0
+2020-03-25T14:04:10.60615 kern.warn: [84854.269665] Code: 41 f0 0f ba 2f 08 0f 92 c0 0f b6 c0 c1 e0 08 89 c2 8b 07 30 e4 09 d0 a9 00 01 ff ff 75 1b 85 c0 74 0e 8b 07 84 c0 74 08 f3 90 <8b> 07 84 c0 75 f8 b8 01 00 00 00 66 89 07 c3 f6 c4 01 75 04 c6 47
+2020-03-25T14:04:10.60616 kern.warn: [84854.269666] RSP: 0018:ffffba9b12bb7ca0 EFLAGS: 00000002
+2020-03-25T14:04:10.60616 kern.warn: [84854.269666] RAX: 0000000000000101 RBX: ffff909c0fcf0000 RCX: 0000000000000000
+2020-03-25T14:04:10.60617 kern.warn: [84854.269667] RDX: 0000000000000000 RSI: 0000000000000000 RDI: ffff909c0fcf0068
+2020-03-25T14:04:10.60618 kern.warn: [84854.269667] RBP: ffff909c0fcf0000 R08: ffff909c0d2756d0 R09: ffff909c0d275758
+2020-03-25T14:04:10.60619 kern.warn: [84854.269667] R10: 0000000000000000 R11: ffffffffa425a5e8 R12: 0000000000000246
+2020-03-25T14:04:10.60620 kern.warn: [84854.269668] R13: 0000000000000000 R14: ffff909c074c7b90 R15: 0000000000000000
+2020-03-25T14:04:10.60621 kern.warn: [84854.269668] FS:  0000000000000000(0000) GS:ffff909c12500000(0000) knlGS:0000000000000000
+2020-03-25T14:04:10.60622 kern.warn: [84854.269669] CS:  0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+2020-03-25T14:04:10.60623 kern.warn: [84854.269669] CR2: 00007fb64c04f000 CR3: 000000048020a006 CR4: 00000000003606e0
+2020-03-25T14:04:10.60623 kern.warn: [84854.269669] Call Trace:
+2020-03-25T14:04:10.60624 kern.warn: [84854.269669]  _raw_spin_lock_irqsave+0x39/0x3f
+2020-03-25T14:04:10.60624 kern.warn: [84854.269670]  execlists_submission_tasklet+0x34/0x70 [i915]
+2020-03-25T14:04:10.60625 kern.warn: [84854.269670]  intel_engine_is_idle.part.0+0x118/0x1b0 [i915]
+2020-03-25T14:04:10.60626 kern.warn: [84854.269670]  hangcheck_elapsed+0x214/0x450 [i915]
+2020-03-25T14:04:10.60626 kern.warn: [84854.269671]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:04:10.60627 kern.warn: [84854.269671]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:04:10.60627 kern.warn: [84854.269671]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:04:10.60628 kern.warn: [84854.269671]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:04:10.60628 kern.warn: [84854.269672]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:04:10.60629 kern.warn: [84854.269672]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:04:10.60630 kern.warn: [84854.269672]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:04:10.60631 kern.warn: [84854.269672]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:04:10.60631 kern.warn: [84854.269672]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:04:10.60632 kern.warn: [84854.269673]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:04:10.60633 kern.warn: [84854.269673]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:04:10.60633 kern.warn: [84854.269673]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:04:10.60634 kern.warn: [84854.269673]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:04:10.60635 kern.warn: [84854.269674]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:04:10.60635 kern.warn: [84854.269674]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:04:10.60636 kern.warn: [84854.269674]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:04:10.60636 kern.warn: [84854.269674]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:04:10.60637 kern.warn: [84854.269674]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:04:10.60637 kern.warn: [84854.269675]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:04:10.60638 kern.warn: [84854.269675]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:04:10.60639 kern.warn: [84854.269675]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:04:10.60639 kern.warn: [84854.269675]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:04:10.60640 kern.warn: [84854.269676]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:04:10.60640 kern.warn: [84854.269676]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:04:10.60641 kern.warn: [84854.269676]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:04:10.60641 kern.warn: [84854.269676]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:04:10.60643 kern.warn: [84854.269677]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:04:10.60643 kern.warn: [84854.269677]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:04:10.60644 kern.warn: [84854.269677]  ? __switch_to_asm+0x40/0x70
+2020-03-25T14:04:10.60644 kern.warn: [84854.269677]  ? __switch_to_asm+0x34/0x70
+2020-03-25T14:04:10.60645 kern.warn: [84854.269677]  ? __switch_to+0x80/0x490
+2020-03-25T14:04:10.60645 kern.warn: [84854.269678]  ? finish_task_switch+0x87/0x270
+2020-03-25T14:04:10.60646 kern.warn: [84854.269678]  process_one_work+0x199/0x3b0
+2020-03-25T14:04:10.60647 kern.warn: [84854.269678]  worker_thread+0x50/0x3a0
+2020-03-25T14:04:10.60647 kern.warn: [84854.269678]  kthread+0xfb/0x130
+2020-03-25T14:04:10.60648 kern.warn: [84854.269679]  ? process_one_work+0x3b0/0x3b0
+2020-03-25T14:04:10.60648 kern.warn: [84854.269679]  ? kthread_park+0x90/0x90
+2020-03-25T14:04:10.60649 kern.warn: [84854.269679]  ret_from_fork+0x35/0x40
+2020-03-25T14:05:19.47297 kern.warn: [84923.136271] mce: CPU0: Core temperature above threshold, cpu clock throttled (total events = 16612)
+2020-03-25T14:05:19.47301 kern.warn: [84923.136273] mce: CPU6: Package temperature above threshold, cpu clock throttled (total events = 232175)
+2020-03-25T14:05:19.47301 kern.warn: [84923.136274] mce: CPU2: Package temperature above threshold, cpu clock throttled (total events = 232175)
+2020-03-25T14:05:19.47302 kern.warn: [84923.136278] mce: CPU0: Package temperature above threshold, cpu clock throttled (total events = 232173)
+2020-03-25T14:05:19.47303 kern.warn: [84923.136320] mce: CPU3: Package temperature above threshold, cpu clock throttled (total events = 232173)
+2020-03-25T14:05:19.47303 kern.warn: [84923.136322] mce: CPU1: Package temperature above threshold, cpu clock throttled (total events = 232173)
+2020-03-25T14:05:19.47304 kern.warn: [84923.136323] mce: CPU5: Package temperature above threshold, cpu clock throttled (total events = 232175)
+2020-03-25T14:05:19.47305 kern.warn: [84923.136324] mce: CPU7: Package temperature above threshold, cpu clock throttled (total events = 232175)
+2020-03-25T14:05:19.47589 kern.info: [84923.139305] mce: CPU0: Core temperature/speed normal
+2020-03-25T14:05:19.47597 kern.info: [84923.139306] mce: CPU6: Package temperature/speed normal
+2020-03-25T14:05:19.47599 kern.info: [84923.139307] mce: CPU2: Package temperature/speed normal
+2020-03-25T14:05:19.47600 kern.info: [84923.139308] mce: CPU7: Package temperature/speed normal
+2020-03-25T14:05:19.47601 kern.info: [84923.139310] mce: CPU3: Package temperature/speed normal
+2020-03-25T14:05:19.47602 kern.info: [84923.139313] mce: CPU0: Package temperature/speed normal
+2020-03-25T14:05:19.47605 kern.info: [84923.139340] mce: CPU1: Package temperature/speed normal
+2020-03-25T14:05:19.47607 kern.info: [84923.139341] mce: CPU5: Package temperature/speed normal
+2020-03-25T14:06:08.94842 user.notice: Mar 25 10:06:08 root: ACPI group/action undefined: button/volumeup / VOLUP
+2020-03-25T14:06:09.07463 user.notice: Mar 25 10:06:09 root: ACPI group/action undefined: button/volumedown / VOLDN
+2020-03-25T14:06:09.20617 user.notice: Mar 25 10:06:09 root: ACPI group/action undefined: button/volumedown / VOLDN
+2020-03-25T14:06:09.38904 user.notice: Mar 25 10:06:09 root: ACPI group/action undefined: button/volumedown / VOLDN
+2020-03-25T14:06:09.67049 user.notice: Mar 25 10:06:09 root: ACPI group/action undefined: button/volumedown / VOLDN
+2020-03-25T14:06:10.29277 user.notice: Mar 25 10:06:10 root: ACPI group/action undefined: button/volumedown / VOLDN
+2020-03-25T14:06:10.53999 user.notice: Mar 25 10:06:10 root: ACPI group/action undefined: button/volumedown / VOLDN
+2020-03-25T14:06:11.89484 user.notice: Mar 25 10:06:11 root: ACPI group/action undefined: button/volumedown / VOLDN
+2020-03-25T14:06:12.13531 user.notice: Mar 25 10:06:12 root: ACPI group/action undefined: button/volumedown / VOLDN
+2020-03-25T14:06:12.45319 user.notice: Mar 25 10:06:12 root: ACPI group/action undefined: button/volumedown / VOLDN
+2020-03-25T14:06:12.73107 user.notice: Mar 25 10:06:12 root: ACPI group/action undefined: button/volumedown / VOLDN
+2020-03-25T14:06:13.08344 user.notice: Mar 25 10:06:13 root: ACPI group/action undefined: button/mute / MUTE
+2020-03-25T14:06:14.51696 user.notice: Mar 25 10:06:14 root: PowerButton pressed: PBTN, shutting down...
+2020-03-25T14:06:14.72620 user.notice: Mar 25 10:06:14 root: ACPI action undefined: LNXPWRBN:00
